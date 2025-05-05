@@ -4,7 +4,7 @@ from django.conf import settings
 from django.http import JsonResponse
 
 GEORREF_API = 'https://apis.datos.gob.ar/georef/api/'
-
+OPENWEATHERMAP_API = 'https://api.openweathermap.org/data/2.5/'
 
 def home(request):
     response = requests.get(GEORREF_API + 'provincias').json()
@@ -34,7 +34,7 @@ def get_clima(request):
         lat = loc['centroide']['lat']
         lon = loc['centroide']['lon']
         clima = requests.get(
-            f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={settings.OPENWEATHERMAP_API_KEY}&units=metric&lang=es'
+            OPENWEATHERMAP_API + f'weather?lat={lat}&lon={lon}&appid={settings.OPENWEATHERMAP_API_KEY}&units=metric&lang=es'
         ).json()
         return JsonResponse({'clima': clima})
     return JsonResponse({'error': 'Localidad no encontrada'})

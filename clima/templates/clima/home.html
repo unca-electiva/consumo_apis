@@ -31,7 +31,9 @@
         <div id="resultado" class="mt-4"></div>
 
         <script>
+            const div_resultado = document.getElementById('resultado')
             document.getElementById('provincia').addEventListener('change', async function () {
+                div_resultado.innerHTML = ''
                 const provincia = this.value;
                 const response = await fetch(`/departamentos/?provincia=${encodeURIComponent(provincia)}`);
                 const data = await response.json();
@@ -46,6 +48,7 @@
             });
 
             document.getElementById('departamento').addEventListener('change', async function () {
+                div_resultado.innerHTML = ''
                 const departamento = this.value;
                 const response = await fetch(`/localidades/?departamento=${encodeURIComponent(departamento)}`);
                 const data = await response.json();
@@ -60,14 +63,14 @@
             });
 
             document.getElementById('consultar').addEventListener('click', async function () {
+                div_resultado.innerHTML = ''
                 const localidad = document.getElementById('localidad').value;
                 const response = await fetch(`/clima?localidad=${encodeURIComponent(localidad)}`);
                 const data = await response.json();
-                const resultado = document.getElementById('resultado');
-                resultado.style.border = '2px dashed blue';
-                resultado.style.padding = '30px';
+                div_resultado.style.border = '2px dashed blue';
+                div_resultado.style.padding = '30px';
                 if (data.clima) {
-                    resultado.innerHTML = `
+                    div_resultado.innerHTML = `
                         <h4>Clima en ${data.clima.name}</h4>
                         <hr>
                         <p>Temperatura: ${data.clima.main.temp}°C</p>
@@ -77,7 +80,7 @@
                         <p>Latitud consultada: ${data.clima.coord.lat}</p>
                         `;
                 } else {
-                    resultado.innerHTML = '<p class="text-danger">No se pudo obtener el clima.</p>';
+                    div_resultado.innerHTML = '<p class="text-danger">No se pudo obtener el clima.</p>';
                 }
             });
         </script>
