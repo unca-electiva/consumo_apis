@@ -5,11 +5,11 @@ Este proyecto es una aplicación web desarrollada con Django que permite consult
 ## Funcionalidades
 
 1. **Consulta de Provincias, Departamentos y Localidades**:
-   - Utiliza la API de georreferenciación de datos.gob.ar para obtener información sobre provincias, departamentos y localidades de Argentina.
+   - Utiliza la API de georreferenciación de datos.gob.ar (https://datosgobar.github.io/georef-ar-api/) para obtener información sobre provincias, departamentos y localidades de Argentina.
    - Los usuarios pueden seleccionar una provincia, luego un departamento y finalmente una localidad desde un formulario interactivo en la página principal.
 
 2. **Consulta del Clima**:
-   - Integra la API de OpenWeatherMap para obtener información climática en tiempo real.
+   - Integra la API de OpenWeatherMap (https://openweathermap.org/current) para obtener información climática en tiempo real.
    - A partir de la localidad seleccionada, se consulta su latitud y longitud para obtener datos como temperatura, sensación térmica, condiciones climáticas, entre otros.
 
 3. **Interfaz de Usuario Interactiva**:
